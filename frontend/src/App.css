@@ -1,0 +1,120 @@
+.App {
+  text-align: center;
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+}
+
+#aboutMain {
+  text-align: center;
+  list-style: inside;
+  font-size: 20px;
+}
+
+.fill {
+  height: 100vh;
+}
+
+.mainContainer {
+  display: flex;
+	flex-direction: column;
+  flex: 1;
+}
+
+#mapContainer {
+  flex: 0.7;
+}
+
+#searchContainer {
+  flex: 0.3;
+  border-right: 2px solid #786259;
+}
+
+.restaurantContainer {
+  border-top: 2px solid #786259;
+}
+
+#loadingData {
+  text-align: center;
+}
+
+.collapsedItems {
+  display: none;
+}
+
+.expandedItems {
+  display: block;
+}
+
+.arrowDown {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.arrowUp {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 20px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.partial {
+  display: flex;
+  position: static;
+  text-align: center;
+  width: 100%;
+  background-color: #1b0800;
+  color: white;
+  font-size: 20px;
+}
+
+#footerContainer {
+  border-top: 2px solid black;
+  bottom: 0;
+}
+
+#headerContainer {
+  border-bottom: 2px solid black;
+  top: 0;
+}
+
+.link {
+  flex: 30%;
+  color: white;
+  text-decoration: none;
+}
+
+.link:visited {
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: white;
+  color: #1b0800;
+}
+
+#homeLink {
+  border: 2px solid #1b0800;
+  background-color: #1b0800;
+  color: white;
+  text-decoration: none;
+}
+
+.processImages{
+  text-align: center;
+}
+
+img {
+  border: 3px solid #786259;
+}
