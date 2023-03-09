@@ -7,13 +7,13 @@ const Search = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    props.setloading(true);
+    props.setIsLoading(true);
     if(props.mapRender){
       props.setMapRender(false);
     }
     axios.get("http://localhost:5000/search/" + address)
       .then(res => {
-        props.setloading(false);
+        props.setIsLoading(false);
         props.setRestaurantsAndMenus(res.data.responseData);
         if(res.data.responseData.status === "Success"){
           props.setMapRender(true);
@@ -22,7 +22,7 @@ const Search = (props) => {
         }
       })
       .catch(error => {
-        props.setloading(false);
+        props.setIsLoading(false);
         console.log(error);
       });
   }

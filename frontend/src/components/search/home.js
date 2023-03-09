@@ -12,7 +12,7 @@ function App() {
   const [restaurantsAndMenus, setRestaurantsAndMenus] = useState();
   const [restaurants, setRestaurants] = useState();
   const [mapRender, setMapRender] = useState(false);
-  const [isloading, setloading] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
   const [apiKey, setKey] = useState();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function App() {
           </div>
           : 
           <div>
-            <Search setRestaurantsAndMenus={setRestaurantsAndMenus} setloading={setloading} setMapRender={setMapRender} mapRender={mapRender} />
+            <Search setRestaurantsAndMenus={setRestaurantsAndMenus} setIsLoading={setIsLoading} setMapRender={setMapRender} mapRender={mapRender} />
             {restaurants}
           </div>
         }

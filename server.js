@@ -11,10 +11,20 @@ app.get("/getKey", (req, res) => {
   console.log("Google Maps API Key " + process.env.API_KEY);
 });
 
-//Handles retrieving nearby Chipotle restaurants locations and current menu inventory for each restaurant
+/**
+ * When a user sends a request to search for nearby Chipotle restaurants, 
+ * return the locations and inventory status.
+ * @param {object} req - request object 
+ * @param {object} res - response object
+ * @returns {object} object contains locations of nearby Chipotle restaurants if any,
+ * along with inventory status for each restaurant
+ */
 app.get("/search/:address", (req, res) => {
 
-  //Takes user requested address and returns nearby restaurants locations and current menu inventory for each restaurant
+  /**
+   * Takes user requested address and returns nearby restaurants locations and current menu inventory for each restaurant
+   * @param {string} address - requested location to search for
+   */
   async function getRestaurantsAndData(address) {
     //Google Maps API call to get geographic coordinates from requested address
     const getAddressCoordinates = await axios("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + process.env.API_KEY)
@@ -113,7 +123,7 @@ app.get("/search/:address", (req, res) => {
       }
     };
 
-    //Make seperate Chipotle API calls for each nearby restaurant for current menu inventory
+    //Make separate Chipotle API calls for each nearby restaurant for current menu inventory
     for(let i=0; i<nearbyRestaurants.length; i++){
       let restaurant = {
         restaurantNumber: nearbyRestaurants[i].restaurantNumber,
