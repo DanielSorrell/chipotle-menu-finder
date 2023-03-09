@@ -8,7 +8,7 @@ dotenv.config();
 
 app.get("/getKey", (req, res) => {
   res.json({apiKey: process.env.API_KEY});
-  console.log("Google Maps API Key successfully sent to frontend");
+  console.log("Google Maps API Key " + process.env.API_KEY);
 });
 
 //Handles retrieving nearby Chipotle restaurants locations and current menu inventory for each restaurant
@@ -20,8 +20,7 @@ app.get("/search/:address", (req, res) => {
     const getAddressCoordinates = await axios("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + process.env.API_KEY)
       .then(addressCoordinates => {
         return addressCoordinates.data.results[0].geometry.location; //{{ lat, lng }}
-      }).catch(coordiantesError => {
-        console.log(coordinatesError);
+      }).catch(coordinatesError => {
         let responseData = {
           status: "Error",
           data: "Invalid address error. Please try again with a valid address."

@@ -30,9 +30,11 @@ const Search = (props) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <label>Search by state, city, or zip code:</label><br />
+        <span className="centerText">Search by state, city, or zip code:</span>
         <input type="text" size="50" id="addressInput" value={address} onChange={(e) => setAddress(e.target.value)}/>
-        <input type="submit" value="searchAddress" />
+        <div id="submitSearchContainer">
+          <input type="submit" id="submitSearchButton" value="Search" />
+        </div>
       </form>
     </div>
   );

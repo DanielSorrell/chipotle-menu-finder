@@ -5,6 +5,7 @@ import Restaurant from "./restaurant.js";
 import Header from "../partials/header.js";
 import Footer from "../partials/footer.js";
 import axios from "axios"
+import ReactLoading from "react-loading";
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
     if(restaurantsAndMenus === undefined){
       return;
     } else if(restaurantsAndMenus.status === "Error"){
-      setRestaurants(<p>{restaurantsAndMenus.data}</p>);
+      setRestaurants(<p className="errorMessage">&#10060;{restaurantsAndMenus.data}</p>);
     } else {
       let restaurantsArray = [];
       restaurantsAndMenus.data.restaurants.map((item) => {
@@ -44,15 +45,28 @@ function App() {
       <div id="main" className={!mapRender ? "fill" : null}>
 
         <div id="searchContainer" className="mainContainer">
-          <Search setRestaurantsAndMenus={setRestaurantsAndMenus} setloading={setloading} setMapRender={setMapRender} mapRender={mapRender} />
-          {restaurants}
+        {isloading ?
+          <div id="loadingData" className="mainContainer">
+            <div>Loading data, please wait..</div>
+            <div>
+              <ReactLoading type={"spin"} color={"#0468F9"} />
+            </div>
+          </div>
+          : 
+          <div>
+            <Search setRestaurantsAndMenus={setRestaurantsAndMenus} setloading={setloading} setMapRender={setMapRender} mapRender={mapRender} />
+            {restaurants}
+          </div>
+        }
         </div>
 
-        {isloading
-          ? <div id="loadingData" className="mainContainer">
-              <p>Loading data, please wait..</p>
-              <p>(This may take a few seconds)</p>
+        {isloading ?
+          <div id="loadingData" className="mainContainer">
+            <div>Loading data, please wait..</div>
+            <div>
+              <ReactLoading type={"spin"} color={"#0468F9"} />
             </div>
+          </div>
           : <div id="mapContainer" className="mainContainer">
               {apiKey !== undefined
                 ? <Map restaurantsAndMenus={restaurantsAndMenus} mapRender={mapRender} apiKey={apiKey}/>
